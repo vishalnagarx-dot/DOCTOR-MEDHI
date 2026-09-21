@@ -1,0 +1,11 @@
+{
+  "background_color": "#3ec4ad",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "INDIA DOCTOR PRO",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "IDP",
+  "start_url": "/",
+  "theme_color": "#ffffff"
+}
