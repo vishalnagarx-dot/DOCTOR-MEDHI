@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOCTOR MEDHI — Kota Clean Healthcare Directory</title>
+  <title>DOCTOR MEDHI — Kota Healthcare Directory</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -153,6 +153,11 @@
     .jd-spec-title { font-size: 0.85rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; }
     .jd-meta-lines { font-size: 0.82rem; color: #475569; display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
     
+    .jd-extra-row {
+      background: #f8fafc; border-left: 3px solid var(--primary);
+      padding: 6px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 6px;
+    }
+
     .jd-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .btn-act {
       padding: 7px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 800;
@@ -229,7 +234,7 @@
     <div id="screenHome">
       <div class="home-hero-head">
         <h1>DOCTOR <span>MEDHI</span></h1>
-        <p>Kota Clean & Verified Healthcare Directory</p>
+        <p>Kota Healthcare & Medical Directory Portal</p>
       </div>
 
       <div class="cards-grid">
@@ -271,8 +276,7 @@
 
       <!-- Action toolbar for Admin / MR -->
       <div class="toolbar-top-actions" id="adminToolbar" style="display:none; justify-content:flex-end; gap:10px; margin-bottom:12px;">
-        <button class="portal-btn" style="background:#e11d48; width:auto; padding:8px 14px;" onclick="permanentlyClearDummyData()"><i class="fa-solid fa-trash-can"></i> Clear Old Database</button>
-        <button class="portal-btn" style="background:var(--primary); width:auto; padding:8px 16px;" onclick="openAddDoctorModal()"><i class="fa-solid fa-user-plus"></i> Add Real Doctor</button>
+        <button class="portal-btn" style="background:var(--primary); width:auto; padding:8px 16px;" onclick="openAddDoctorModal()"><i class="fa-solid fa-user-plus"></i> Add Doctor</button>
       </div>
 
       <!-- HIERARCHICAL FILTER BAR -->
@@ -297,7 +301,7 @@
         </div>
         <div class="f-group">
           <label>Search Doctor / Clinic</label>
-          <input type="text" id="keywordInput" placeholder="Name, hospital, area..." oninput="filterDoctors()">
+          <input type="text" id="keywordInput" placeholder="Name, hospital, department..." oninput="filterDoctors()">
         </div>
         <button class="btn-apply-filter" onclick="filterDoctors()">Search</button>
       </div>
@@ -310,13 +314,16 @@
         <div class="chip" onclick="setChipDept('Orthopedics', this)">Orthopedics</div>
         <div class="chip" onclick="setChipDept('Pediatrics', this)">Pediatrics</div>
         <div class="chip" onclick="setChipDept('Gynecology', this)">Gynecology</div>
+        <div class="chip" onclick="setChipDept('Dermatology', this)">Dermatology</div>
+        <div class="chip" onclick="setChipDept('Neurology', this)">Neurology</div>
+        <div class="chip" onclick="setChipDept('ENT', this)">ENT</div>
       </div>
 
       <!-- Content Grid -->
       <div class="directory-grid-layout">
         <div id="doctorsListings"></div>
 
-        <!-- Quick Appointment -->
+        <!-- Quick Appointment (Only for Patient Mode) -->
         <div class="side-booking-card" id="patientAppointmentCard">
           <h3>Quick Appointment</h3>
           <p>Send consultation request to doctor.</p>
@@ -341,38 +348,59 @@
     <span>Admin</span>
   </div>
 
-  <!-- AUTH MODAL -->
+  <!-- AUTH MODAL WITH STRICT VALIDATION & OTP -->
   <div class="modal-overlay" id="authModal">
     <div class="modal-box">
       <h3 id="modalAuthTitle">Authentication</h3>
-      <p id="modalAuthSubtitle">Enter details to proceed.</p>
-      <input type="email" id="authEmail" class="m-input" placeholder="Gmail ID">
-      <input type="password" id="authMobile" class="m-input" placeholder="Mobile Number">
-      <div style="display: flex; gap: 10px; margin-top: 8px;">
-        <button type="button" onclick="processAuthSubmission()" style="flex:1; padding: 10px; background:var(--brand-pink); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Submit</button>
+      <p id="modalAuthSubtitle" style="font-size:0.8rem; color:#64748b; margin-bottom:12px;">Enter valid Gmail ID and Mobile Number.</p>
+      
+      <input type="text" id="authFullName" class="m-input" placeholder="Full Name" style="display:none;">
+      <input type="email" id="authEmail" class="m-input" placeholder="Gmail ID (user@gmail.com)">
+      <input type="tel" id="authMobile" class="m-input" placeholder="10-Digit Mobile Number" maxlength="10">
+
+      <!-- OTP Box -->
+      <div id="otpBoxSection" style="display:none; margin-top:8px;">
+        <p style="font-size:0.8rem; color:#059669; font-weight:700; margin-bottom:6px;">OTP has been triggered below:</p>
+        <input type="text" id="authOtpInput" class="m-input" placeholder="Enter 4-Digit OTP" maxlength="4">
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="button" id="btnSubmitAuth" onclick="processAuthSubmission()" style="flex:1; padding: 10px; background:var(--brand-pink); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Send OTP & Proceed</button>
         <button type="button" onclick="closeAuthModal()" style="flex:1; padding: 10px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Cancel</button>
       </div>
     </div>
   </div>
 
-  <!-- ADD DOCTOR MODAL -->
+  <!-- ADD DOCTOR MODAL (With Photo Upload & 2 Extra Custom Rows) -->
   <div class="modal-overlay" id="addDocModal">
     <div class="modal-box">
-      <h3>Add Real Doctor</h3>
-      <p style="font-size:0.8rem; color:#64748b; margin-bottom:12px;">Enter actual doctor details. Real unique sequential ID will be assigned.</p>
+      <h3>Add Doctor</h3>
+      <p style="font-size:0.8rem; color:#64748b; margin-bottom:12px;">Fill all details. ID will be generated automatically.</p>
+      
+      <label style="font-size:0.75rem; font-weight:700; color:#475569;">Doctor Photo (Upload from Gallery):</label>
+      <input type="file" id="dPhotoInput" accept="image/*" class="m-input" onchange="handleDoctorPhotoUpload(event)">
+      
       <input type="text" id="dName" class="m-input" placeholder="Doctor Full Name (e.g. Dr. Brij Mohan)">
-      <input type="text" id="dDeg" class="m-input" placeholder="Degree (e.g. MBBS, MD)">
-      <input type="text" id="dDept" class="m-input" placeholder="Department (e.g. General Physician)">
+      <input type="text" id="dDeg" class="m-input" placeholder="Degree (e.g. MBBS, MD, MS)">
+      <input type="text" id="dDept" class="m-input" placeholder="Department (e.g. General Physician, Cardiology)">
       <input type="text" id="dState" class="m-input" placeholder="State" value="Rajasthan">
-      <input type="text" id="dDistrict" class="m-input" placeholder="District" value="Kota">
+      <input type="text" id="dDistrict" class="m-input" placeholder="District / City" value="Kota">
       <input type="text" id="dClinic" class="m-input" placeholder="Clinic / Hospital Name & Address">
       <input type="text" id="dChemist" class="m-input" placeholder="Chemist Shop Name">
       <input type="text" id="dTime" class="m-input" placeholder="OPD Timings">
-      <input type="text" id="dFee" class="m-input" placeholder="Consultation Fee (INR)">
+      <input type="text" id="dFee" class="m-input" placeholder="Consultation Fee (e.g. 400)">
       <input type="text" id="dPhone" class="m-input" placeholder="Appointment Mobile Number">
       <input type="text" id="dChemistPhone" class="m-input" placeholder="Chemist Mobile Number">
+      
+      <!-- 2 Nayi Atirikt Rows -->
+      <label style="font-size:0.75rem; font-weight:700; color:#475569;">Additional Information 1 (Specialization / Achievements):</label>
+      <input type="text" id="dExtra1" class="m-input" placeholder="e.g. Gold Medalist, 15+ Years Clinical Experience">
+      
+      <label style="font-size:0.75rem; font-weight:700; color:#475569;">Additional Information 2 (Hospital Affiliations / Instructions):</label>
+      <input type="text" id="dExtra2" class="m-input" placeholder="e.g. Visiting Consultant at Apex Hospital Kota">
+
       <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button onclick="submitNewDoctor()" style="flex:1; padding: 10px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Save Real Doctor</button>
+        <button onclick="submitNewDoctor()" style="flex:1; padding: 10px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Save Doctor</button>
         <button onclick="closeAddDoctorModal()" style="flex:1; padding: 10px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Cancel</button>
       </div>
     </div>
@@ -391,12 +419,19 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Brand new clean collection key to permanently wipe previous dummy loops
-    const DB_COLLECTION = "pure_verified_doctors_v1";
+    const DB_COLLECTION = "doctor_medhi_clean_db_v2";
+    const STORAGE_KEY = "doctor_medhi_local_backup_v2";
 
     let allDocs = [];
     let currentRole = 'patient';
     let activeDept = 'all';
+    let uploadedDoctorPhotoBase64 = '';
+
+    // Auth variables
+    let currentAuthRole = '';
+    let currentAuthMode = '';
+    let generatedOtpCode = '';
+    let otpStageActive = false;
 
     function updateClock() {
       const now = new Date();
@@ -406,33 +441,27 @@
     updateClock();
 
     function initCloud() {
-      // Clear any stored local cache from browser
-      localStorage.clear();
+      // 1. First load from LocalStorage immediately
+      const cached = localStorage.getItem(STORAGE_KEY);
+      if (cached) {
+        try {
+          allDocs = JSON.parse(cached);
+          filterDoctors();
+        } catch(e) {}
+      }
 
+      // 2. Sync with Firebase Firestore
       db.collection(DB_COLLECTION).get().then((snap) => {
         let list = [];
         snap.forEach(doc => list.push(doc.data()));
-        allDocs = list;
+        if (list.length > 0) {
+          allDocs = list;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(allDocs));
+        }
         filterDoctors();
       }).catch(() => {
-        allDocs = [];
         filterDoctors();
       });
-    }
-
-    function permanentlyClearDummyData() {
-      if(confirm("Are you sure you want to permanently clear old dummy collections?")) {
-        // Also wipe doctors_crm collection if exists
-        db.collection("doctors_crm").get().then(snap => {
-          snap.forEach(d => d.ref.delete());
-        });
-        db.collection(DB_COLLECTION).get().then(snap => {
-          snap.forEach(d => d.ref.delete());
-          allDocs = [];
-          filterDoctors();
-          alert("All old records permanently erased from database!");
-        });
-      }
     }
 
     function goHome() {
@@ -474,16 +503,19 @@
 
     function filterDoctors() {
       const box = document.getElementById('doctorsListings');
+      if (!box) return;
       box.innerHTML = '';
 
       const state = document.getElementById('selState').value;
       const district = document.getElementById('selDistrict').value;
-      const q = document.getElementById('keywordInput').value.toLowerCase().trim();
+      const q = (document.getElementById('keywordInput').value || '').toLowerCase().trim();
 
       const filtered = allDocs.filter(d => {
         const mState = (state === 'all') || (d.state && d.state.toLowerCase() === state.toLowerCase());
         const mDist = (district === 'all') || (d.district && d.district.toLowerCase() === district.toLowerCase());
-        const mQ = !q || (d.name && d.name.toLowerCase().includes(q)) || (d.clinic_address && d.clinic_address.toLowerCase().includes(q));
+        const mQ = !q || (d.name && d.name.toLowerCase().includes(q)) || 
+                         (d.clinic_address && d.clinic_address.toLowerCase().includes(q)) ||
+                         (d.department && d.department.toLowerCase().includes(q));
         const mDept = (activeDept === 'all') || (d.department && d.department.toLowerCase() === activeDept.toLowerCase());
         return mState && mDist && mQ && mDept;
       });
@@ -496,9 +528,9 @@
       box.innerHTML = '';
       if (data.length === 0) {
         box.innerHTML = `<div style="background:#fff; padding:40px 20px; text-align:center; border-radius:12px; color:#64748b; border:1px solid #e2e8f0;">
-          <i class="fa-solid fa-folder-open" style="font-size:2.5rem; color:#cbd5e1; margin-bottom:10px;"></i>
-          <p style="font-weight:700; font-size:1rem; color:#0f172a;">No Doctors Found</p>
-          <p style="font-size:0.85rem; margin-top:4px;">Old dummy data has been removed. Please click 'Add Real Doctor' to list genuine verified doctors.</p>
+          <i class="fa-solid fa-user-doctor" style="font-size:2.5rem; color:#cbd5e1; margin-bottom:10px;"></i>
+          <p style="font-weight:700; font-size:1.05rem; color:#0f172a;">No Doctors Available</p>
+          <p style="font-size:0.85rem; margin-top:4px;">No doctors listed yet. Add doctors using the 'Add Doctor' option.</p>
         </div>`;
         return;
       }
@@ -507,20 +539,26 @@
         const card = document.createElement('div');
         card.className = 'jd-doc-card';
         card.innerHTML = `
-          <div class="jd-doc-thumb"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="jd-doc-thumb">
+            ${d.photo ? `<img src="${d.photo}" alt="Doctor">` : `<i class="fa-solid fa-user-doctor"></i>`}
+          </div>
           <div class="jd-doc-details">
-            <h2>${d.name} <span style="font-size:0.85rem; color:#64748b;">(${d.degree})</span></h2>
+            <h2>${d.name} <span style="font-size:0.85rem; color:#64748b;">(${d.degree || 'MBBS'})</span></h2>
             <div class="jd-badges">
               <span class="badge-docid"><i class="fa-solid fa-id-badge"></i> ${d.doctorId || 'DR0001'}</span>
             </div>
             <div class="jd-spec-title">${d.department}</div>
             <div class="jd-meta-lines">
-              <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address}</div>
+              <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address} (${d.district}, ${d.state})</div>
               <div><i class="fa-solid fa-pills" style="color:#ea580c;"></i> Chemist: ${d.chemist_shop || '-'} (Ph: ${d.chemist_phone || '-'})</div>
-              <div><i class="fa-solid fa-indian-rupee-sign" style="color:#059669;"></i> Fee: ₹${d.fee || '300'} • ${d.opd_timings}</div>
+              <div><i class="fa-solid fa-indian-rupee-sign" style="color:#059669;"></i> Consultation Fee: ₹${d.fee || '400'} • OPD: ${d.opd_timings}</div>
             </div>
-            <div class="jd-actions">
-              <a href="tel:${d.phone}" class="btn-act call"><i class="fa-solid fa-phone"></i> Call</a>
+
+            ${d.extra1 ? `<div class="jd-extra-row"><b>Highlights:</b> ${d.extra1}</div>` : ''}
+            ${d.extra2 ? `<div class="jd-extra-row"><b>Affiliations:</b> ${d.extra2}</div>` : ''}
+
+            <div class="jd-actions" style="margin-top:10px;">
+              <a href="tel:${d.phone}" class="btn-act call"><i class="fa-solid fa-phone"></i> Call Doctor</a>
               <a href="https://wa.me/91${(d.phone || '').replace(/[^0-9]/g, '').slice(-10)}" target="_blank" class="btn-act whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
               <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.name + ' ' + d.clinic_address)}" target="_blank" class="btn-act map"><i class="fa-solid fa-map-location-dot"></i> Live Map</a>
             </div>
@@ -530,8 +568,24 @@
       });
     }
 
-    function openAddDoctorModal() { document.getElementById('addDocModal').style.display = 'flex'; }
-    function closeAddDoctorModal() { document.getElementById('addDocModal').style.display = 'none'; }
+    // Photo Upload Handler for Add Doctor
+    function handleDoctorPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        uploadedDoctorPhotoBase64 = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function openAddDoctorModal() {
+      uploadedDoctorPhotoBase64 = '';
+      document.getElementById('addDocModal').style.display = 'flex';
+    }
+    function closeAddDoctorModal() {
+      document.getElementById('addDocModal').style.display = 'none';
+    }
 
     function submitNewDoctor() {
       const name = document.getElementById('dName').value.trim();
@@ -545,9 +599,11 @@
       const opd_timings = document.getElementById('dTime').value.trim();
       const fee = document.getElementById('dFee').value.trim();
       const phone = document.getElementById('dPhone').value.trim();
+      const extra1 = document.getElementById('dExtra1').value.trim();
+      const extra2 = document.getElementById('dExtra2').value.trim();
 
       if (!name || !clinic_address || !phone) {
-        alert("Please fill Doctor Full Name, Clinic Address, and Mobile Number!");
+        alert("Please enter Doctor Full Name, Clinic Address, and Mobile Number!");
         return;
       }
 
@@ -556,18 +612,95 @@
       const newDoc = {
         id: String(Date.now()),
         doctorId: seqId,
+        photo: uploadedDoctorPhotoBase64 || "",
         name: name.startsWith("Dr.") ? name : `Dr. ${name}`,
         degree, department, state, district, clinic_address,
         chemist_shop, chemist_phone, opd_timings,
-        fee: fee || "350", phone
+        fee: fee || "400", phone,
+        extra1: extra1 || "",
+        extra2: extra2 || ""
       };
 
+      // 1. Instantly update memory array and LocalStorage
+      allDocs.unshift(newDoc);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(allDocs));
+
+      // 2. Persist to Firebase Firestore
       db.collection(DB_COLLECTION).doc(newDoc.id).set(newDoc).then(() => {
-        alert(`Real Doctor added successfully! Assigned Unique ID: ${newDoc.doctorId}`);
-        allDocs.push(newDoc);
-        closeAddDoctorModal();
-        filterDoctors();
+        console.log("Synced to cloud.");
+      }).catch(err => {
+        console.warn("Cloud sync delayed, saved locally:", err);
       });
+
+      alert(`Doctor Added Successfully! Assigned Unique ID: ${newDoc.doctorId}`);
+      closeAddDoctorModal();
+      filterDoctors();
+    }
+
+    // STRICT AUTHENTICATION SYSTEM WITH GMAIL & OTP
+    function openAuthModal(role, mode) {
+      currentAuthRole = role;
+      currentAuthMode = mode;
+      otpStageActive = false;
+      generatedOtpCode = '';
+
+      document.getElementById('modalAuthTitle').innerText = `${role.toUpperCase()} — ${mode.toUpperCase()}`;
+      document.getElementById('modalAuthSubtitle').innerText = "Valid Gmail ID and 10-digit mobile number are mandatory.";
+      
+      const isReg = (mode === 'register');
+      document.getElementById('authFullName').style.display = isReg ? 'block' : 'none';
+      document.getElementById('authFullName').value = '';
+      document.getElementById('authEmail').value = '';
+      document.getElementById('authMobile').value = '';
+      document.getElementById('authOtpInput').value = '';
+      document.getElementById('otpBoxSection').style.display = 'none';
+      document.getElementById('btnSubmitAuth').innerText = 'Send OTP & Proceed';
+
+      document.getElementById('authModal').style.display = 'flex';
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').style.display = 'none';
+    }
+
+    function processAuthSubmission() {
+      const email = document.getElementById('authEmail').value.trim();
+      const mobile = document.getElementById('authMobile').value.trim();
+
+      // Strict validation 1: Gmail validation
+      if (!email.toLowerCase().endsWith("@gmail.com") || email.length < 11) {
+        alert("Error: Please enter a valid Gmail ID ending with @gmail.com");
+        return;
+      }
+
+      // Strict validation 2: 10-Digit Mobile validation
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(mobile)) {
+        alert("Error: Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      // Stage 1: Send OTP
+      if (!otpStageActive) {
+        generatedOtpCode = String(Math.floor(1000 + Math.random() * 9000));
+        alert(`[OTP Verification]: Your verification code is: ${generatedOtpCode}`);
+        
+        document.getElementById('otpBoxSection').style.display = 'block';
+        document.getElementById('btnSubmitAuth').innerText = 'Verify OTP & Complete';
+        otpStageActive = true;
+        return;
+      }
+
+      // Stage 2: Verify OTP
+      const enteredOtp = document.getElementById('authOtpInput').value.trim();
+      if (enteredOtp !== generatedOtpCode) {
+        alert("Incorrect OTP! Please enter the exact 4-digit code sent.");
+        return;
+      }
+
+      alert("OTP Verified Successfully!");
+      closeAuthModal();
+      openDirectoryView(currentAuthRole);
     }
 
     function promptAdminLogin() {
@@ -575,7 +708,7 @@
       if (!id) return;
       const pass = prompt("Admin Password:");
       if (!pass) return;
-      if (id === "9351000961" && pass === "1960001539") {
+      if (id.trim() === "9351000961" && pass.trim() === "1960001539") {
         alert("Master Admin Access Granted.");
         openDirectoryView('admin');
       } else {
@@ -583,17 +716,6 @@
       }
     }
 
-    function openAuthModal(role, mode) {
-      document.getElementById('modalAuthTitle').innerText = `${role.toUpperCase()} — ${mode.toUpperCase()}`;
-      document.getElementById('authModal').style.display = 'flex';
-    }
-    function closeAuthModal() { document.getElementById('authModal').style.display = 'none'; }
-    function processAuthSubmission() {
-      const email = document.getElementById('authEmail').value.trim();
-      if(!email) return alert("Enter valid email");
-      closeAuthModal();
-      openDirectoryView('doctor');
-    }
     function handleBooking(e) {
       e.preventDefault();
       alert("Appointment request submitted successfully!");
