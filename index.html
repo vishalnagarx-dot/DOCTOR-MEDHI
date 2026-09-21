@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOCTOR MEDHI — All India Healthcare & Medical Directory</title>
+  <title>DOCTOR MEDHI — Kota Comprehensive Healthcare & Medical Directory</title>
   
-  <link rel="manifest" href="./manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -268,7 +267,7 @@
     <div id="screenHome">
       <div class="home-hero-head">
         <h1>DOCTOR <span>MEDHI</span></h1>
-        <p>All India Cloud Healthcare, Clinic & Medical Representative Network System</p>
+        <p>Kota & All India Comprehensive Healthcare, Clinic & Chemist Network System</p>
       </div>
 
       <div class="cards-grid">
@@ -276,7 +275,7 @@
         <div class="portal-card">
           <div class="role-icon-box icon-patient"><i class="fa-solid fa-hospital-user"></i></div>
           <h3>Patient Access</h3>
-          <p>Instant search for verified doctors across India, check OPD timings & book consultations.</p>
+          <p>Instant search for verified doctors across Kota & India, check OPD timings & book consultations.</p>
           <button class="portal-btn" style="background:var(--patient-grad);" onclick="openDirectoryView('patient')">Open Patient Access</button>
         </div>
 
@@ -487,10 +486,12 @@
       <input type="text" id="dDept" class="m-input" placeholder="Department">
       <input type="text" id="dState" class="m-input" placeholder="State">
       <input type="text" id="dDistrict" class="m-input" placeholder="District / City">
-      <input type="text" id="dClinic" class="m-input" placeholder="Exact Clinic / Hospital Address">
+      <input type="text" id="dClinic" class="m-input" placeholder="Exact Clinic / Hospital Name & Address">
+      <input type="text" id="dChemist" class="m-input" placeholder="Chemist Shop Name">
       <input type="text" id="dTime" class="m-input" placeholder="OPD Timings">
       <input type="text" id="dFee" class="m-input" placeholder="Fee (₹300 - ₹600)">
-      <input type="text" id="dPhone" class="m-input" placeholder="Mobile">
+      <input type="text" id="dPhone" class="m-input" placeholder="Appointment Mobile">
+      <input type="text" id="dChemistPhone" class="m-input" placeholder="Chemist Mobile">
       <input type="email" id="dEmail" class="m-input" placeholder="Doctor Gmail (For Login & Profile)">
       <div style="display: flex; gap: 10px; margin-top: 10px;">
         <button onclick="submitNewDoctor()" style="flex:1; padding: 10px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Submit</button>
@@ -549,35 +550,47 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Clean Seed Doctors without numbers in names
+    // Comprehensive Clean Kota & All India Doctors Database (Private & Sarkari, No Repeating Numbers, Chemist & Mobile Info Included)
     const GENERATED_SEED_DOCTORS = [];
     const depts = ["General Physician", "Cardiology", "Orthopedics", "Pediatrics", "Gynecology", "Dermatology", "Neurology", "ENT", "Ophthalmology", "Dental"];
-    const names = ["Rahul Sharma", "Amit Verma", "Priya Gupta", "Vikram Singh", "Neha Agrawal", "Sanjay Kumar", "Ankit Jain", "Pooja Sharma", "Manish Meena", "Deepak Saxena", "Sunil Rathore", "Rakesh Goyal", "Alok Mishra", "Kirti Soni", "Manoj Pareek", "Vikas Vijayvargiya", "Suresh Sharma", "Anita Choudhary", "Kavita Sharma", "Rajesh Tailor"];
-    const cities = [
-      {state: "Rajasthan", district: "Kota", addrs: ["Nayapura", "Talwandi", "Gumanpura", "Vigyan Nagar", "Borkheda", "Indra Vihar"]},
-      {state: "Rajasthan", district: "Jaipur", addrs: ["C-Scheme", "Malviya Nagar", "Vaishali Nagar", "Mansarovar", "Raja Park"]},
-      {state: "Delhi", district: "New Delhi", addrs: ["Connaught Place", "Saket", "Lajpat Nagar", "Rohini", "Dwarka"]},
-      {state: "Maharashtra", district: "Mumbai", addrs: ["Andheri", "Bandra", "Dadar", "Borivali", "Colaba"]}
+    const names = [
+      "Dr. Rahul Sharma", "Dr. Amit Verma", "Dr. Priya Gupta", "Dr. Vikram Singh", "Dr. Neha Agrawal", 
+      "Dr. Sanjay Kumar", "Dr. Ankit Jain", "Dr. Pooja Sharma", "Dr. Manish Meena", "Dr. Deepak Saxena", 
+      "Dr. Sunil Rathore", "Dr. Rakesh Goyal", "Dr. Alok Mishra", "Dr. Kirti Soni", "Dr. Manoj Pareek", 
+      "Dr. Vikas Vijayvargiya", "Dr. Suresh Sharma", "Dr. Anita Choudhary", "Dr. Kavita Sharma", "Dr. Rajesh Tailor",
+      "Dr. R. C. Meena", "Dr. S. K. Shrivastava", "Dr. V. K. Goyal", "Dr. Meenakshi Saxena", "Dr. Tarun Mathur",
+      "Dr. RASHMI KHANDELWAL", "Dr. B. L. Mansinghka", "Dr. Zafar Ahmed", "Dr. P. K. Tiwari", "Dr. Nidhi Vijay"
     ];
+    const hospitalsOrClinics = [
+      "New Medical College Hospital (Govt.)", "MB Government Hospital", "Apex Hospital", "Jeevan Rekha Critical Care", 
+      "Sahara Hospital", "Kota Heart Institute", "Sood Nursing Home", "Samrat Hospital", "Allen Healthcare Clinic", 
+      "Government CHC Centre", "Ayushman Arogya Mandir", "City Care Clinic", "Shree Ram Hospital", "Niramay Clinic"
+    ];
+    const chemists = ["Balaji Medical & Chemist", "New Sanjeevani Medical Store", "Shree Ram Chemist", "Maharaja Medicos", "Kota Pharma & Chemist", "Apollo Pharmacy", "Standard Medicos", "-"];
+    const locationsInKota = ["Talwandi, Kota", "Nayapura, Kota", "Gumanpura, Kota", "Vigyan Nagar, Kota", "Borkheda, Kota", "Indra Vihar, Kota", "Dadabari, Kota", "Rangbari, Kota", "Mahavir Nagar, Kota", "Kunhari, Kota"];
 
-    for(let i=1; i<=310; i++) {
+    for(let i=1; i<=320; i++) {
       let n = names[(i-1) % names.length];
       let d = depts[(i-1) % depts.length];
-      let c = cities[(i-1) % cities.length];
-      let feeVal = 300 + ((i * 37) % 301);
+      let hosp = hospitalsOrClinics[(i-1) % hospitalsOrClinics.length];
+      let chem = chemists[(i-1) % chemists.length];
+      let loc = locationsInKota[(i-1) % locationsInKota.length];
+      let feeVal = 300 + ((i * 41) % 301); // Between 300 and 600
       let seqId = "DR" + String(i).padStart(4, '0');
       
       GENERATED_SEED_DOCTORS.push({
         id: String(2000 + i),
         doctorId: seqId,
-        name: `Dr. ${n}`,
-        degree: i%2===0 ? "MBBS, MD" : "MBBS, MS",
-        experience: `${5 + (i%15)} Years`,
+        name: n,
+        degree: i%3===0 ? "MBBS, MS" : (i%2===0 ? "MBBS, MD" : "MBBS, DM / M.Ch"),
+        experience: `${5 + (i%20)} Years`,
         department: d,
-        state: c.state,
-        district: c.district,
-        clinic_address: `${c.addrs[i % c.addrs.length]}, ${c.district}`,
-        opd_timings: "10:00 AM - 08:00 PM",
+        state: "Rajasthan",
+        district: "Kota",
+        clinic_address: `${hosp}, ${loc}`,
+        chemist_shop: chem,
+        chemist_phone: `9414${String(100000 + i).slice(-6)}`,
+        opd_timings: i%2===0 ? "10:00 AM - 02:00 PM & 05:00 PM - 08:00 PM" : "09:00 AM - 04:00 PM",
         fee: String(feeVal),
         phone: `9829${String(100000 + i).slice(-6)}`,
         email: `doc${i}@gmail.com`,
@@ -729,7 +742,6 @@
       });
     }
 
-    // Gallery Photo Upload
     function uploadProfilePhoto(type, event) {
       const file = event.target.files[0];
       if(!file) return;
@@ -1023,6 +1035,7 @@
           <div class="jd-spec-title">${d.department}</div>
           <div class="jd-meta-lines">
             <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address} (${d.district}, ${d.state})</div>
+            <div><i class="fa-solid fa-pills" style="color:#ea580c;"></i> Chemist: ${d.chemist_shop || '-'} (Ph: ${d.chemist_phone || '-'})</div>
             <div><i class="fa-solid fa-indian-rupee-sign" style="color:#059669;"></i> Fee: ₹${d.fee || '300'} • ${d.opd_timings}</div>
           </div>
 
@@ -1069,6 +1082,7 @@
             <div class="jd-spec-title">${d.department}</div>
             <div class="jd-meta-lines">
               <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address} (${d.district}, ${d.state})</div>
+              <div><i class="fa-solid fa-pills" style="color:#ea580c;"></i> Chemist: ${d.chemist_shop || '-'} (Ph: ${d.chemist_phone || '-'})</div>
               <div><i class="fa-solid fa-indian-rupee-sign" style="color:#059669;"></i> Fee: ₹${d.fee || '300'} • ${d.opd_timings}</div>
             </div>
 
@@ -1150,9 +1164,11 @@
       const state = document.getElementById('dState').value.trim();
       const district = document.getElementById('dDistrict').value.trim();
       const clinic_address = document.getElementById('dClinic').value.trim();
+      const chemist_shop = document.getElementById('dChemist').value.trim() || "-";
       const opd_timings = document.getElementById('dTime').value.trim();
       const fee = document.getElementById('dFee').value.trim();
       const phone = document.getElementById('dPhone').value.trim();
+      const chemist_phone = document.getElementById('dChemistPhone').value.trim() || "-";
       const email = document.getElementById('dEmail').value.trim();
       if (!name || !district || !state) { alert("Fill required fields!"); return; }
 
@@ -1160,7 +1176,7 @@
         id: String(Date.now()),
         doctorId: "",
         name: name.startsWith("Dr.") ? name : `Dr. ${name}`,
-        degree, department, state, district, clinic_address, opd_timings, fee: fee || "350", phone, email,
+        degree, department, state, district, clinic_address, chemist_shop, chemist_phone, opd_timings, fee: fee || "350", phone, email,
         rating: "5.0",
         verified: (currentRole === 'admin') ? true : false,
         notes: [], appointments: []
