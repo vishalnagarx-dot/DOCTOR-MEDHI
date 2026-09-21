@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOCTOR MEDHI — Kota Comprehensive Healthcare & Medical Directory</title>
+  <title>DOCTOR MEDHI — Kota Healthcare Directory</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,9 +43,6 @@
     .brand-text-block { display: flex; flex-direction: column; line-height: 1.1; }
     .brand-text-block .t-doctor { font-size: 1.2rem; font-weight: 900; color: var(--brand-blue); letter-spacing: 1.5px; }
     .brand-text-block .t-medhi { font-size: 1.1rem; font-weight: 900; color: var(--brand-pink); letter-spacing: 2px; }
-
-    .nav-actions-right { display: flex; align-items: center; gap: 10px; }
-    .btn-top-chat { background: var(--brand-blue); color: #fff; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: none; align-items: center; gap: 6px; }
 
     .live-clock-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -98,8 +95,7 @@
     }
 
     .profile-panel {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      border: 2px solid var(--primary); border-radius: 16px; padding: 20px;
+      background: #ffffff; border: 2px solid var(--primary); border-radius: 16px; padding: 20px;
       margin-bottom: 20px; box-shadow: var(--shadow); display: none;
     }
     .profile-grid { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
@@ -108,7 +104,7 @@
     .profile-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
     .profile-info h3 { font-size: 1.3rem; font-weight: 800; color: var(--brand-blue); }
     .profile-info p { font-size: 0.88rem; color: var(--muted); font-weight: 600; }
-    .btn-edit-prof { background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.85rem; align-self: flex-start; margin-top: 6px; }
+    .btn-edit-prof { background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.85rem; align-self: flex-start; }
 
     .filter-hierarchy-bar {
       background: #ffffff; border-radius: 14px; border: 1px solid var(--border);
@@ -127,8 +123,6 @@
     }
 
     .chips-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 20px; }
-    .chips-strip::-webkit-scrollbar { height: 3px; }
-    .chips-strip::-webkit-scrollbar-thumb { background: #cbd5e1; }
     .chip {
       white-space: nowrap; background: #fff; border: 1px solid #cbd5e1;
       padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
@@ -153,14 +147,6 @@
     .jd-doc-thumb img { width: 100%; height: 100%; object-fit: cover; }
     .jd-doc-details h2 { font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
     .jd-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
-    .badge-star {
-      background: #15803d; color: #ffffff; padding: 2px 8px; border-radius: 6px;
-      font-size: 0.78rem; font-weight: 800; display: inline-flex; align-items: center; gap: 4px;
-    }
-    .badge-trust {
-      background: #fef08a; color: #854d0e; padding: 2px 8px; border-radius: 6px;
-      font-size: 0.72rem; font-weight: 800; display: inline-flex; align-items: center; gap: 4px;
-    }
     .badge-docid {
       background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 6px;
       font-size: 0.72rem; font-weight: 800; display: inline-flex; align-items: center; gap: 4px;
@@ -178,16 +164,6 @@
     .btn-act.book { background: #2563eb; color: #fff; }
     .btn-act.whatsapp { background: #16a34a; color: #fff; }
     .btn-act.map { background: #f8fafc; color: #334155; border: 1px solid #cbd5e1; }
-
-    .doctor-live-dashboard {
-      margin-top: 14px; padding: 12px; background: #f8fafc; border: 1.5px solid #cbd5e1;
-      border-radius: 10px; font-size: 0.82rem;
-    }
-    .dash-sec-title { font-weight: 800; color: var(--brand-blue); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-    .dash-item-row { background: #fff; padding: 6px 10px; border-radius: 6px; border-left: 3px solid var(--primary); margin-top: 4px; display: flex; justify-content: space-between; align-items: center; }
-
-    .toolbar-top-actions { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 14px; }
-    .tool-action-btn { background: #0284c7; color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; font-size: 0.82rem; cursor: pointer; }
 
     .side-booking-card {
       background: #ffffff; border: 1px solid var(--border); border-radius: 14px;
@@ -210,10 +186,7 @@
       border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px;
       padding: 6px 10px; display: flex; align-items: center; gap: 6px;
       cursor: pointer; color: #94a3b8; font-size: 0.72rem; font-weight: 800;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.2); transition: 0.2s;
     }
-    .bottom-corner-admin:hover { background: #0f2b48; color: #ffffff; border-color: #38bdf8; transform: scale(1.04); }
-    .bottom-corner-admin i { font-size: 0.8rem; color: #38bdf8; }
 
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -224,16 +197,10 @@
       background: #ffffff; padding: 24px; border-radius: 14px;
       width: 100%; max-width: 520px; box-shadow: var(--shadow); max-height: 90vh; overflow-y: auto;
     }
-    .modal-box h3 { margin-bottom: 6px; color: var(--brand-blue); font-weight: 800; }
-    .modal-box p { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; }
     .m-input {
       width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1;
       border-radius: 8px; margin-bottom: 10px; font-size: 0.85rem; outline: none; background: #fff;
     }
-
-    .chat-msg-box { height: 220px; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; padding: 10px; overflow-y: auto; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
-    .chat-bubble { background: #e0f2fe; padding: 8px 12px; border-radius: 8px; font-size: 0.82rem; max-width: 80%; }
-    .chat-bubble.me { background: #dcfce7; align-self: flex-end; }
   </style>
 </head>
 <body>
@@ -251,12 +218,9 @@
       </div>
     </div>
     
-    <div class="nav-actions-right">
-      <button class="btn-top-chat" id="btnDoctorChatRoom" onclick="openChatModal()"><i class="fa-solid fa-comments"></i> Doctor Private Peer Chat</button>
-      <div class="live-clock-badge">
-        <div class="clock-dot"></div>
-        <span id="liveTime">Loading...</span>
-      </div>
+    <div class="live-clock-badge">
+      <div class="clock-dot"></div>
+      <span id="liveTime">Loading...</span>
     </div>
   </nav>
 
@@ -267,37 +231,34 @@
     <div id="screenHome">
       <div class="home-hero-head">
         <h1>DOCTOR <span>MEDHI</span></h1>
-        <p>Kota & All India Comprehensive Healthcare, Clinic & Chemist Network System</p>
+        <p>Kota & All India Clean Verified Medical Network</p>
       </div>
 
       <div class="cards-grid">
-        <!-- 1. Patient Access -->
         <div class="portal-card">
           <div class="role-icon-box icon-patient"><i class="fa-solid fa-hospital-user"></i></div>
           <h3>Patient Access</h3>
-          <p>Instant search for verified doctors across Kota & India, check OPD timings & book consultations.</p>
+          <p>Search verified doctors in Kota, view clinic location, chemist info & book appointments.</p>
           <button class="portal-btn" style="background:var(--patient-grad);" onclick="openDirectoryView('patient')">Open Patient Access</button>
         </div>
 
-        <!-- 2. Doctor Access -->
         <div class="portal-card">
           <div class="role-icon-box icon-doctor"><i class="fa-solid fa-stethoscope"></i></div>
           <h3>Doctor Access</h3>
-          <p>Access your OPD schedules and cloud directory notes securely across India.</p>
+          <p>Login to manage your profile, appointment requests, and patient messages.</p>
           <div class="btn-wrap-double">
-            <button class="portal-btn btn-reg-subtle" onclick="openAuthModal('doctor', 'register')"><i class="fa-solid fa-user-plus"></i> Registration</button>
-            <button class="portal-btn" style="background:var(--doctor-grad);" onclick="openAuthModal('doctor', 'login')"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+            <button class="portal-btn btn-reg-subtle" onclick="openAuthModal('doctor', 'register')">Registration</button>
+            <button class="portal-btn" style="background:var(--doctor-grad);" onclick="openAuthModal('doctor', 'login')">Login</button>
           </div>
         </div>
 
-        <!-- 3. Medical Representative Access -->
         <div class="portal-card">
           <div class="role-icon-box icon-mr"><i class="fa-solid fa-briefcase-medical"></i></div>
           <h3>Medical Representative</h3>
-          <p>Check doctor visiting slots, log permanent diary notes & navigate clinics pan-India.</p>
+          <p>Add doctors, manage permanent notes, and schedule clinic visits.</p>
           <div class="btn-wrap-double">
-            <button class="portal-btn btn-reg-subtle" onclick="openAuthModal('mr', 'register')"><i class="fa-solid fa-user-plus"></i> Registration</button>
-            <button class="portal-btn" style="background:var(--mr-grad);" onclick="openAuthModal('mr', 'login')"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+            <button class="portal-btn btn-reg-subtle" onclick="openAuthModal('mr', 'register')">Registration</button>
+            <button class="portal-btn" style="background:var(--mr-grad);" onclick="openAuthModal('mr', 'login')">Login</button>
           </div>
         </div>
       </div>
@@ -320,106 +281,69 @@
             <p><i class="fa-solid fa-phone" style="color:#059669;"></i> <span id="profPhoneDisplay">Mobile</span> | <i class="fa-solid fa-envelope" style="color:#0284c7;"></i> <span id="profEmailDisplay">Gmail</span></p>
             <div style="margin-top:6px; display:flex; gap:8px; align-items:center;">
               <input type="file" id="docPhotoUpload" accept="image/*" style="font-size:0.8rem;" onchange="uploadProfilePhoto('doctor', event)">
-              <button class="btn-edit-prof" onclick="openEditProfileModal('doctor')"><i class="fa-solid fa-pen-to-square"></i> Edit Details</button>
+              <button class="btn-edit-prof" onclick="openEditProfileModal('doctor')">Edit Details</button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- MEDICAL REPRESENTATIVE PROFILE & PERMANENT DIARY PANEL -->
-      <div class="profile-panel" id="mrProfileBox" style="border-color:#ea580c;">
-        <div class="profile-grid">
-          <div class="profile-avatar-large" id="mrAvatarDiv" style="color:#ea580c; border-color:#ea580c;"><i class="fa-solid fa-user-tie"></i></div>
-          <div class="profile-info">
-            <h3 id="mrNameDisplay">Medical Representative</h3>
-            <p id="mrEmailDisplay">email@gmail.com</p>
-            <div style="margin-top:6px; display:flex; gap:8px; align-items:center;">
-              <input type="file" id="mrPhotoUpload" accept="image/*" style="font-size:0.8rem;" onchange="uploadProfilePhoto('mr', event)">
-              <button class="btn-edit-prof" style="background:#ea580c;" onclick="openEditProfileModal('mr')"><i class="fa-solid fa-pen-to-square"></i> Edit Details</button>
-            </div>
-          </div>
-        </div>
-        <!-- Permanent Cloud Diary Section for MR with Edit & Delete -->
-        <div style="margin-top:16px; border-top:1px solid #cbd5e1; padding-top:12px;">
-          <h4 style="color:#ea580c; font-size:0.95rem; margin-bottom:6px;"><i class="fa-solid fa-book-medical"></i> MR Permanent Cloud Diary & Notes</h4>
-          <p style="font-size:0.78rem; color:var(--muted); margin-bottom:8px;">Saved notes and records are stored permanently on cloud with edit and delete options.</p>
-          <div style="display:flex; gap:6px; margin-bottom:8px;">
-            <input type="text" id="mrDiaryDoctor" class="m-input" placeholder="Doctor Name / ID" style="margin-bottom:0; flex:1;">
-            <input type="text" id="mrDiaryNote" class="m-input" placeholder="Permanent Note / Discussion" style="margin-bottom:0; flex:2;">
-            <button onclick="saveMRPermanentDiary()" style="background:#ea580c; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer;">Save</button>
-          </div>
-          <div id="mrDiaryContainer" style="max-height:160px; overflow-y:auto; display:flex; flex-direction:column; gap:4px;"></div>
         </div>
       </div>
 
       <!-- Action toolbar for Admin / Medical Representative -->
-      <div class="toolbar-top-actions" id="adminToolbar" style="display:none;">
-        <button class="tool-action-btn" onclick="openAddDoctorModal()"><i class="fa-solid fa-user-plus"></i> Add New Doctor</button>
-        <button class="tool-action-btn" id="btnPendingReqs" style="background:#f59e0b; display:none;" onclick="openPendingModal()"><i class="fa-solid fa-bell"></i> Pending Requests (0)</button>
+      <div class="toolbar-top-actions" id="adminToolbar" style="display:none; justify-content:flex-end; margin-bottom:12px;">
+        <button class="portal-btn" style="background:var(--primary); width:auto; padding:8px 16px;" onclick="openAddDoctorModal()"><i class="fa-solid fa-user-plus"></i> Add Verified Doctor</button>
       </div>
 
       <!-- HIERARCHICAL FILTER BAR -->
       <div class="filter-hierarchy-bar" id="filterBarContainer">
         <div class="f-group">
           <label>Country</label>
-          <select id="selCountry"><option value="India">India (All)</option></select>
+          <select id="selCountry"><option value="India">India</option></select>
         </div>
         <div class="f-group">
           <label>State</label>
           <select id="selState" onchange="filterDoctors()">
             <option value="all">All States</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Rajasthan" selected>Rajasthan</option>
           </select>
         </div>
         <div class="f-group">
-          <label>District / City</label>
+          <label>City / District</label>
           <select id="selDistrict" onchange="filterDoctors()">
-            <option value="all">All Districts / Cities</option>
-            <option value="Kota">Kota</option>
+            <option value="all">All Districts</option>
+            <option value="Kota" selected>Kota</option>
             <option value="Jaipur">Jaipur</option>
-            <option value="New Delhi">New Delhi</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Lucknow">Lucknow</option>
-            <option value="Bhopal">Bhopal</option>
           </select>
         </div>
         <div class="f-group">
-          <label>Keyword Search</label>
-          <input type="text" id="keywordInput" placeholder="Doctor name, ID, clinic..." oninput="filterDoctors()">
+          <label>Search Doctor / Clinic</label>
+          <input type="text" id="keywordInput" placeholder="Name, hospital, area..." oninput="filterDoctors()">
         </div>
         <button class="btn-apply-filter" onclick="filterDoctors()">Search</button>
       </div>
 
-      <!-- Category Chips (All Departments) -->
+      <!-- Category Chips -->
       <div class="chips-strip" id="chipsContainer">
-        <div class="chip active" onclick="setChipDept('all', this)"><i class="fa-solid fa-layer-group"></i> All Departments</div>
-        <div class="chip" onclick="setChipDept('General Physician', this)"><i class="fa-solid fa-stethoscope"></i> General Physician</div>
-        <div class="chip" onclick="setChipDept('Cardiology', this)"><i class="fa-solid fa-heart-pulse"></i> Cardiology</div>
-        <div class="chip" onclick="setChipDept('Orthopedics', this)"><i class="fa-solid fa-bone"></i> Orthopedics</div>
-        <div class="chip" onclick="setChipDept('Pediatrics', this)"><i class="fa-solid fa-baby"></i> Pediatrics</div>
-        <div class="chip" onclick="setChipDept('Gynecology', this)"><i class="fa-solid fa-hospital-user"></i> Gynecology</div>
-        <div class="chip" onclick="setChipDept('Dermatology', this)"><i class="fa-solid fa-hand-dots"></i> Dermatology</div>
-        <div class="chip" onclick="setChipDept('Neurology', this)"><i class="fa-solid fa-brain"></i> Neurology</div>
-        <div class="chip" onclick="setChipDept('ENT', this)"><i class="fa-solid fa-ear-listen"></i> ENT</div>
-        <div class="chip" onclick="setChipDept('Ophthalmology', this)"><i class="fa-solid fa-eye"></i> Ophthalmology</div>
-        <div class="chip" onclick="setChipDept('Dental', this)"><i class="fa-solid fa-tooth"></i> Dental</div>
+        <div class="chip active" onclick="setChipDept('all', this)">All Departments</div>
+        <div class="chip" onclick="setChipDept('General Physician', this)">General Physician</div>
+        <div class="chip" onclick="setChipDept('Cardiology', this)">Cardiology</div>
+        <div class="chip" onclick="setChipDept('Orthopedics', this)">Orthopedics</div>
+        <div class="chip" onclick="setChipDept('Pediatrics', this)">Pediatrics</div>
+        <div class="chip" onclick="setChipDept('Gynecology', this)">Gynecology</div>
+        <div class="chip" onclick="setChipDept('Dermatology', this)">Dermatology</div>
+        <div class="chip" onclick="setChipDept('Neurology', this)">Neurology</div>
+        <div class="chip" onclick="setChipDept('ENT', this)">ENT</div>
       </div>
 
       <!-- Content Grid -->
       <div class="directory-grid-layout">
         <div id="doctorsListings"></div>
 
-        <!-- Quick Appointment (Only for Patient) -->
+        <!-- Quick Appointment -->
         <div class="side-booking-card" id="patientAppointmentCard">
           <h3>Quick Appointment</h3>
-          <p>Send an instant consultation request to verified doctors.</p>
+          <p>Send an instant consultation request.</p>
           <form onsubmit="handleBooking(event)">
-            <input type="text" id="bkName" class="side-input" placeholder="Patient Full Name" required>
-            <input type="tel" id="bkPhone" class="side-input" placeholder="10-Digit Mobile Number" pattern="[0-9]{10}" required>
+            <input type="text" id="bkName" class="side-input" placeholder="Patient Name" required>
+            <input type="tel" id="bkPhone" class="side-input" placeholder="10-Digit Mobile" pattern="[0-9]{10}" required>
             <select id="bkSlot" class="side-input">
               <option value="Morning">Morning Slot (10 AM - 1 PM)</option>
               <option value="Evening">Evening Slot (5 PM - 8 PM)</option>
@@ -432,7 +356,7 @@
 
   </div>
 
-  <!-- BOTTOM RIGHT CORNER ADMIN BOX -->
+  <!-- Master Admin Button -->
   <div class="bottom-corner-admin" onclick="promptAdminLogin()" title="Master Admin">
     <i class="fa-solid fa-user-shield"></i>
     <span>Admin</span>
@@ -443,35 +367,12 @@
     <div class="modal-box">
       <h3 id="modalAuthTitle">Authentication</h3>
       <p id="modalAuthSubtitle">Enter details to proceed.</p>
-      
       <input type="text" id="regFullName" class="m-input" placeholder="Full Name" style="display:none;">
-      <input type="text" id="regDegree" class="m-input" placeholder="Degree / Qualification (e.g. MBBS, MD)" style="display:none;">
-      <input type="text" id="regExp" class="m-input" placeholder="Experience (e.g. 10 Years)" style="display:none;">
       <input type="email" id="authEmail" class="m-input" placeholder="Gmail ID (user@gmail.com)">
-      <input type="password" id="authMobile" class="m-input" placeholder="Mobile Number (acts as Password)">
-      
-      <div id="otpSection" style="display:none; margin-bottom:10px;">
-        <input type="text" id="authOtpInput" class="m-input" placeholder="Enter 4-Digit OTP sent to mobile">
-        <button type="button" onclick="verifyOtpCode()" style="padding:6px 12px; background:#10b981; color:#fff; border:none; border-radius:6px; font-weight:700; cursor:pointer; font-size:0.8rem;">Verify OTP</button>
-      </div>
-
+      <input type="password" id="authMobile" class="m-input" placeholder="Mobile Number (Password)">
       <div style="display: flex; gap: 10px; margin-top: 8px;">
-        <button type="button" id="btnAuthSubmit" onclick="processAuthSubmission()" style="flex:1; padding: 10px; background:var(--brand-pink); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Send OTP & Proceed</button>
+        <button type="button" onclick="processAuthSubmission()" style="flex:1; padding: 10px; background:var(--brand-pink); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Submit</button>
         <button type="button" onclick="closeAuthModal()" style="flex:1; padding: 10px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- EDIT PROFILE MODAL -->
-  <div class="modal-overlay" id="editProfileModal">
-    <div class="modal-box">
-      <h3>Edit Profile Details</h3>
-      <input type="text" id="editNameInput" class="m-input" placeholder="Full Name">
-      <input type="text" id="editDegInput" class="m-input" placeholder="Degree / Qualification">
-      <input type="text" id="editPhoneInput" class="m-input" placeholder="Mobile Number">
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button onclick="saveProfileEdits()" style="flex:1; padding: 10px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Save</button>
-        <button onclick="closeEditProfileModal()" style="flex:1; padding: 10px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Cancel</button>
       </div>
     </div>
   </div>
@@ -479,61 +380,24 @@
   <!-- ADD DOCTOR MODAL -->
   <div class="modal-overlay" id="addDocModal">
     <div class="modal-box">
-      <h3>Add New Doctor</h3>
-      <p id="addDocSubText">Fill out doctor details. Sequential ID (DR0001...) will be generated upon Admin approval.</p>
-      <input type="text" id="dName" class="m-input" placeholder="Doctor Full Name">
+      <h3>Add Verified Doctor</h3>
+      <p style="font-size:0.8rem; color:#64748b; margin-bottom:12px;">Fill authentic details. Sequential ID (DR0001...) will be assigned.</p>
+      <input type="text" id="dName" class="m-input" placeholder="Doctor Full Name (e.g. Dr. Brij Mohan)">
       <input type="text" id="dDeg" class="m-input" placeholder="Degree (e.g. MBBS, MD)">
-      <input type="text" id="dDept" class="m-input" placeholder="Department">
-      <input type="text" id="dState" class="m-input" placeholder="State">
-      <input type="text" id="dDistrict" class="m-input" placeholder="District / City">
-      <input type="text" id="dClinic" class="m-input" placeholder="Exact Clinic / Hospital Name & Address">
+      <input type="text" id="dDept" class="m-input" placeholder="Department (e.g. General Physician)">
+      <input type="text" id="dState" class="m-input" placeholder="State" value="Rajasthan">
+      <input type="text" id="dDistrict" class="m-input" placeholder="District" value="Kota">
+      <input type="text" id="dClinic" class="m-input" placeholder="Clinic / Hospital Name & Address">
       <input type="text" id="dChemist" class="m-input" placeholder="Chemist Shop Name">
       <input type="text" id="dTime" class="m-input" placeholder="OPD Timings">
-      <input type="text" id="dFee" class="m-input" placeholder="Fee (₹300 - ₹600)">
-      <input type="text" id="dPhone" class="m-input" placeholder="Appointment Mobile">
-      <input type="text" id="dChemistPhone" class="m-input" placeholder="Chemist Mobile">
-      <input type="email" id="dEmail" class="m-input" placeholder="Doctor Gmail (For Login & Profile)">
+      <input type="text" id="dFee" class="m-input" placeholder="Consultation Fee (INR)">
+      <input type="text" id="dPhone" class="m-input" placeholder="Appointment Mobile Number">
+      <input type="text" id="dChemistPhone" class="m-input" placeholder="Chemist Mobile Number">
+      <input type="email" id="dEmail" class="m-input" placeholder="Doctor Gmail (Optional)">
       <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button onclick="submitNewDoctor()" style="flex:1; padding: 10px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Submit</button>
+        <button onclick="submitNewDoctor()" style="flex:1; padding: 10px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer;">Save Doctor</button>
         <button onclick="closeAddDoctorModal()" style="flex:1; padding: 10px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Cancel</button>
       </div>
-    </div>
-  </div>
-
-  <!-- PENDING REQUESTS MODAL -->
-  <div class="modal-overlay" id="pendingModal">
-    <div class="modal-box" style="max-width:580px;">
-      <h3>Pending Approvals (Registrations & Doctor Additions)</h3>
-      <div id="pendingListContainer"></div>
-      <button onclick="closePendingModal()" style="width:100%; margin-top:14px; padding:8px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Close</button>
-    </div>
-  </div>
-
-  <!-- DOCTOR PRIVATE PEER CHAT MODAL -->
-  <div class="modal-overlay" id="chatModal">
-    <div class="modal-box" style="max-width:650px;">
-      <h3>Doctor Private Peer Chat & Document Sharing</h3>
-      <p>Connect with other verified doctors. Chat opens only after request acceptance.</p>
-      
-      <div style="display:grid; grid-template-columns: 220px 1fr; gap:12px;">
-        <div style="border-right:1px solid #cbd5e1; padding-right:8px;">
-          <div style="font-size:0.78rem; font-weight:800; margin-bottom:6px; color:var(--muted);">VERIFIED DOCTORS:</div>
-          <div id="doctorPeerList" style="display:flex; flex-direction:column; gap:6px; max-height:220px; overflow-y:auto;"></div>
-        </div>
-        
-        <div>
-          <div id="chatActiveHeader" style="font-weight:800; font-size:0.85rem; color:var(--brand-blue); margin-bottom:6px;">Select a doctor</div>
-          <div class="chat-msg-box" id="chatMsgContainer">
-            <div class="chat-bubble"><b>System:</b> Select a doctor and send/accept connection to chat privately.</div>
-          </div>
-          <div style="display:flex; gap:6px;">
-            <input type="text" id="chatInputText" class="m-input" placeholder="Type message..." style="margin-bottom:0; flex:1;" disabled>
-            <button id="btnSendChat" onclick="sendPrivateChatMessage()" style="background:var(--brand-pink); color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer;" disabled>Send</button>
-          </div>
-        </div>
-      </div>
-
-      <button onclick="closeChatModal()" style="width:100%; margin-top:14px; padding:8px; background:#cbd5e1; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Close</button>
     </div>
   </div>
 
@@ -550,69 +414,13 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Comprehensive Clean Kota & All India Doctors Database (Private & Sarkari, No Repeating Numbers, Chemist & Mobile Info Included)
-    const GENERATED_SEED_DOCTORS = [];
-    const depts = ["General Physician", "Cardiology", "Orthopedics", "Pediatrics", "Gynecology", "Dermatology", "Neurology", "ENT", "Ophthalmology", "Dental"];
-    const names = [
-      "Dr. Rahul Sharma", "Dr. Amit Verma", "Dr. Priya Gupta", "Dr. Vikram Singh", "Dr. Neha Agrawal", 
-      "Dr. Sanjay Kumar", "Dr. Ankit Jain", "Dr. Pooja Sharma", "Dr. Manish Meena", "Dr. Deepak Saxena", 
-      "Dr. Sunil Rathore", "Dr. Rakesh Goyal", "Dr. Alok Mishra", "Dr. Kirti Soni", "Dr. Manoj Pareek", 
-      "Dr. Vikas Vijayvargiya", "Dr. Suresh Sharma", "Dr. Anita Choudhary", "Dr. Kavita Sharma", "Dr. Rajesh Tailor",
-      "Dr. R. C. Meena", "Dr. S. K. Shrivastava", "Dr. V. K. Goyal", "Dr. Meenakshi Saxena", "Dr. Tarun Mathur",
-      "Dr. RASHMI KHANDELWAL", "Dr. B. L. Mansinghka", "Dr. Zafar Ahmed", "Dr. P. K. Tiwari", "Dr. Nidhi Vijay"
-    ];
-    const hospitalsOrClinics = [
-      "New Medical College Hospital (Govt.)", "MB Government Hospital", "Apex Hospital", "Jeevan Rekha Critical Care", 
-      "Sahara Hospital", "Kota Heart Institute", "Sood Nursing Home", "Samrat Hospital", "Allen Healthcare Clinic", 
-      "Government CHC Centre", "Ayushman Arogya Mandir", "City Care Clinic", "Shree Ram Hospital", "Niramay Clinic"
-    ];
-    const chemists = ["Balaji Medical & Chemist", "New Sanjeevani Medical Store", "Shree Ram Chemist", "Maharaja Medicos", "Kota Pharma & Chemist", "Apollo Pharmacy", "Standard Medicos", "-"];
-    const locationsInKota = ["Talwandi, Kota", "Nayapura, Kota", "Gumanpura, Kota", "Vigyan Nagar, Kota", "Borkheda, Kota", "Indra Vihar, Kota", "Dadabari, Kota", "Rangbari, Kota", "Mahavir Nagar, Kota", "Kunhari, Kota"];
-
-    for(let i=1; i<=320; i++) {
-      let n = names[(i-1) % names.length];
-      let d = depts[(i-1) % depts.length];
-      let hosp = hospitalsOrClinics[(i-1) % hospitalsOrClinics.length];
-      let chem = chemists[(i-1) % chemists.length];
-      let loc = locationsInKota[(i-1) % locationsInKota.length];
-      let feeVal = 300 + ((i * 41) % 301); // Between 300 and 600
-      let seqId = "DR" + String(i).padStart(4, '0');
-      
-      GENERATED_SEED_DOCTORS.push({
-        id: String(2000 + i),
-        doctorId: seqId,
-        name: n,
-        degree: i%3===0 ? "MBBS, MS" : (i%2===0 ? "MBBS, MD" : "MBBS, DM / M.Ch"),
-        experience: `${5 + (i%20)} Years`,
-        department: d,
-        state: "Rajasthan",
-        district: "Kota",
-        clinic_address: `${hosp}, ${loc}`,
-        chemist_shop: chem,
-        chemist_phone: `9414${String(100000 + i).slice(-6)}`,
-        opd_timings: i%2===0 ? "10:00 AM - 02:00 PM & 05:00 PM - 08:00 PM" : "09:00 AM - 04:00 PM",
-        fee: String(feeVal),
-        phone: `9829${String(100000 + i).slice(-6)}`,
-        email: `doc${i}@gmail.com`,
-        rating: "4.9",
-        verified: true,
-        notes: [],
-        appointments: []
-      });
-    }
+    // Clean Collection Name to permanently eliminate old dummy loops
+    const DB_COLLECTION = "doctors_real_list";
 
     let allDocs = [];
-    let pendingDocs = [];
-    let pendingUsers = [];
     let currentRole = 'patient';
     let loggedInUserEmail = '';
     let activeDept = 'all';
-    let authTargetRole = '';
-    let authTargetMode = '';
-    let generatedOtp = '';
-    let otpVerified = false;
-    let activeChatRoomId = null;
-    let chatUnsubscribe = null;
 
     function updateClock() {
       const now = new Date();
@@ -622,19 +430,13 @@
     updateClock();
 
     function initCloud() {
-      db.collection("doctors_crm").get().then((snap) => {
+      db.collection(DB_COLLECTION).get().then((snap) => {
         let list = [];
         snap.forEach(doc => list.push(doc.data()));
-        if (list.length < 50) {
-          GENERATED_SEED_DOCTORS.forEach(d => db.collection("doctors_crm").doc(String(d.id)).set(d));
-          allDocs = GENERATED_SEED_DOCTORS;
-        } else {
-          allDocs = list.filter(d => d.verified !== false);
-          pendingDocs = list.filter(d => d.verified === false);
-        }
+        allDocs = list;
         filterDoctors();
       }).catch(() => {
-        allDocs = GENERATED_SEED_DOCTORS;
+        allDocs = [];
         filterDoctors();
       });
     }
@@ -642,9 +444,7 @@
     function goHome() {
       document.getElementById('screenHome').style.display = 'block';
       document.getElementById('screenDirectory').style.display = 'none';
-      document.getElementById('btnDoctorChatRoom').style.display = 'none';
       document.getElementById('doctorProfileBox').style.display = 'none';
-      document.getElementById('mrProfileBox').style.display = 'none';
       document.getElementById('patientAppointmentCard').style.display = 'none';
     }
 
@@ -656,317 +456,44 @@
       document.getElementById('portalModeBadge').innerText = `${role.toUpperCase()} MODE`;
 
       const toolbar = document.getElementById('adminToolbar');
-      const btnPend = document.getElementById('btnPendingReqs');
-      const btnChat = document.getElementById('btnDoctorChatRoom');
       const docProf = document.getElementById('doctorProfileBox');
-      const mrProf = document.getElementById('mrProfileBox');
       const patientAppt = document.getElementById('patientAppointmentCard');
       const filterBar = document.getElementById('filterBarContainer');
       const chips = document.getElementById('chipsContainer');
 
       if (role === 'doctor') {
-        btnChat.style.display = 'inline-flex';
         docProf.style.display = 'block';
-        mrProf.style.display = 'none';
         patientAppt.style.display = 'none';
         filterBar.style.display = 'none';
         chips.style.display = 'none';
+        toolbar.style.display = 'none';
         loadDoctorProfileData(userEmail);
-      } else if (role === 'mr') {
-        btnChat.style.display = 'none';
+      } else if (role === 'mr' || role === 'admin') {
         docProf.style.display = 'none';
-        mrProf.style.display = 'block';
         patientAppt.style.display = 'none';
         filterBar.style.display = 'grid';
         chips.style.display = 'flex';
-        loadMRProfileData(userEmail);
-        loadMRPermanentDiaryList(userEmail);
-      } else if (role === 'patient') {
-        btnChat.style.display = 'none';
+        toolbar.style.display = 'flex';
+      } else {
         docProf.style.display = 'none';
-        mrProf.style.display = 'none';
         patientAppt.style.display = 'block';
         filterBar.style.display = 'grid';
         chips.style.display = 'flex';
-      } else {
-        btnChat.style.display = 'inline-flex';
-        docProf.style.display = 'none';
-        mrProf.style.display = 'none';
-        patientAppt.style.display = 'none';
-        filterBar.style.display = 'grid';
-        chips.style.display = 'flex';
-      }
-
-      if (role === 'admin') {
-        toolbar.style.display = 'flex';
-        db.collection("users_crm").where("verified", "==", false).get().then(snap => {
-          pendingUsers = [];
-          snap.forEach(doc => pendingUsers.push({ id: doc.id, ...doc.data() }));
-          btnPend.style.display = 'inline-block';
-          btnPend.innerText = `Pending Requests (${pendingDocs.length + pendingUsers.length})`;
-        });
-      } else if (role === 'mr') {
-        toolbar.style.display = 'flex';
-        btnPend.style.display = 'none';
-      } else {
         toolbar.style.display = 'none';
       }
       filterDoctors();
     }
 
     function loadDoctorProfileData(email) {
-      db.collection("doctors_crm").where("email", "==", email).get().then(snap => {
-        if(!snap.empty) {
-          let docObj = snap.docs[0].data();
-          document.getElementById('profNameDisplay').innerText = docObj.name;
-          document.getElementById('profDegreeDisplay').innerText = `${docObj.degree} • ${docObj.experience || '10 Years'}`;
-          document.getElementById('profPhoneDisplay').innerText = docObj.phone;
-          document.getElementById('profEmailDisplay').innerText = email;
-          if (docObj.photo) {
-            document.getElementById('profAvatarDiv').innerHTML = `<img src="${docObj.photo}">`;
-          }
+      let docObj = allDocs.find(d => d.email === email);
+      if(docObj) {
+        document.getElementById('profNameDisplay').innerText = docObj.name;
+        document.getElementById('profDegreeDisplay').innerText = `${docObj.degree} • ${docObj.clinic_address}`;
+        document.getElementById('profPhoneDisplay').innerText = docObj.phone;
+        document.getElementById('profEmailDisplay').innerText = email;
+        if (docObj.photo) {
+          document.getElementById('profAvatarDiv').innerHTML = `<img src="${docObj.photo}">`;
         }
-      });
-    }
-
-    function loadMRProfileData(email) {
-      db.collection("users_crm").doc(email).get().then(doc => {
-        if(doc.exists) {
-          let data = doc.data();
-          document.getElementById('mrNameDisplay').innerText = data.name || "Medical Representative";
-          document.getElementById('mrEmailDisplay').innerText = email;
-          if(data.photo) {
-            document.getElementById('mrAvatarDiv').innerHTML = `<img src="${data.photo}">`;
-          }
-        }
-      });
-    }
-
-    function uploadProfilePhoto(type, event) {
-      const file = event.target.files[0];
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const dataUrl = e.target.result;
-        if(type === 'doctor') {
-          db.collection("doctors_crm").where("email", "==", loggedInUserEmail).get().then(snap => {
-            if(!snap.empty) {
-              let docId = snap.docs[0].id;
-              db.collection("doctors_crm").doc(docId).update({ photo: dataUrl }).then(() => {
-                alert("Profile photo uploaded successfully!");
-                loadDoctorProfileData(loggedInUserEmail);
-              });
-            }
-          });
-        } else {
-          db.collection("users_crm").doc(loggedInUserEmail).update({ photo: dataUrl }).then(() => {
-            alert("Profile photo uploaded successfully!");
-            loadMRProfileData(loggedInUserEmail);
-          });
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function openEditProfileModal(type) {
-      if(type === 'doctor') {
-        db.collection("doctors_crm").where("email", "==", loggedInUserEmail).get().then(snap => {
-          if(!snap.empty) {
-            let docObj = snap.docs[0].data();
-            document.getElementById('editNameInput').value = docObj.name || '';
-            document.getElementById('editDegInput').value = docObj.degree || '';
-            document.getElementById('editPhoneInput').value = docObj.phone || '';
-            document.getElementById('editProfileModal').style.display = 'flex';
-          }
-        });
-      } else {
-        db.collection("users_crm").doc(loggedInUserEmail).get().then(doc => {
-          if(doc.exists) {
-            let data = doc.data();
-            document.getElementById('editNameInput').value = data.name || '';
-            document.getElementById('editDegInput').value = data.degree || '';
-            document.getElementById('editPhoneInput').value = data.mobile || '';
-            document.getElementById('editProfileModal').style.display = 'flex';
-          }
-        });
-      }
-    }
-
-    function closeEditProfileModal() { document.getElementById('editProfileModal').style.display = 'none'; }
-
-    function saveProfileEdits() {
-      const name = document.getElementById('editNameInput').value.trim();
-      const degree = document.getElementById('editDegInput').value.trim();
-      const phone = document.getElementById('editPhoneInput').value.trim();
-
-      if(currentRole === 'doctor') {
-        db.collection("doctors_crm").where("email", "==", loggedInUserEmail).get().then(snap => {
-          if(!snap.empty) {
-            let docId = snap.docs[0].id;
-            db.collection("doctors_crm").doc(docId).update({ name, degree, phone }).then(() => {
-              alert("Profile updated successfully!");
-              closeEditProfileModal();
-              loadDoctorProfileData(loggedInUserEmail);
-              filterDoctors();
-            });
-          }
-        });
-      } else {
-        db.collection("users_crm").doc(loggedInUserEmail).update({ name, degree, mobile: phone }).then(() => {
-          alert("Profile updated successfully!");
-          closeEditProfileModal();
-          loadMRProfileData(loggedInUserEmail);
-        });
-      }
-    }
-
-    function saveMRPermanentDiary() {
-      const docTarget = document.getElementById('mrDiaryDoctor').value.trim();
-      const noteText = document.getElementById('mrDiaryNote').value.trim();
-      if(!docTarget || !noteText) { alert("Please enter Doctor and Note!"); return; }
-
-      db.collection("mr_permanent_diary").add({
-        mrEmail: loggedInUserEmail,
-        doctor: docTarget,
-        note: noteText,
-        time: new Date().toLocaleString()
-      }).then(() => {
-        alert("Diary note saved permanently to cloud!");
-        document.getElementById('mrDiaryDoctor').value = '';
-        document.getElementById('mrDiaryNote').value = '';
-        loadMRPermanentDiaryList(loggedInUserEmail);
-      });
-    }
-
-    function loadMRPermanentDiaryList(email) {
-      db.collection("mr_permanent_diary").where("mrEmail", "==", email).get().then(snap => {
-        const container = document.getElementById('mrDiaryContainer');
-        container.innerHTML = '';
-        if(snap.empty) {
-          container.innerHTML = '<div style="font-size:0.75rem; color:#64748b;">No permanent diary notes yet.</div>';
-          return;
-        }
-        snap.forEach(doc => {
-          let item = doc.data();
-          let id = doc.id;
-          container.innerHTML += `
-            <div style="background:#fff; padding:6px 8px; border-radius:6px; font-size:0.75rem; border-left:3px solid #ea580c; display:flex; justify-content:space-between; align-items:center;">
-              <div><strong>${item.doctor}</strong>: ${item.note} <span style="color:#94a3b8; font-size:9px; margin-left:6px;">(${item.time})</span></div>
-              <div style="display:flex; gap:4px;">
-                <button onclick="editMRDiary('${id}', '${item.note}')" style="background:#0284c7; color:#fff; border:none; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;">Edit</button>
-                <button onclick="deleteMRDiary('${id}')" style="background:#e11d48; color:#fff; border:none; padding:2px 6px; border-radius:4px; font-size:10px; cursor:pointer;">Delete</button>
-              </div>
-            </div>
-          `;
-        });
-      });
-    }
-
-    function editMRDiary(id, oldNote) {
-      let newNote = prompt("Edit your diary note:", oldNote);
-      if(newNote !== null && newNote.trim() !== "") {
-        db.collection("mr_permanent_diary").doc(id).update({ note: newNote.trim() }).then(() => {
-          alert("Diary note updated!");
-          loadMRPermanentDiaryList(loggedInUserEmail);
-        });
-      }
-    }
-
-    function deleteMRDiary(id) {
-      if(confirm("Are you sure you want to delete this diary note?")) {
-        db.collection("mr_permanent_diary").doc(id).delete().then(() => {
-          alert("Diary note deleted!");
-          loadMRPermanentDiaryList(loggedInUserEmail);
-        });
-      }
-    }
-
-    function openAuthModal(role, mode) {
-      authTargetRole = role;
-      authTargetMode = mode;
-      otpVerified = false;
-      document.getElementById('modalAuthTitle').innerText = `${role === 'mr' ? 'Medical Representative' : 'Doctor'} — ${mode === 'register' ? 'Registration' : 'Login'}`;
-      document.getElementById('modalAuthSubtitle').innerText = mode === 'register' ? 'Fill details for Admin verification.' : 'Enter Gmail and Mobile to login.';
-      
-      const isReg = (mode === 'register');
-      document.getElementById('regFullName').style.display = isReg ? 'block' : 'none';
-      document.getElementById('regDegree').style.display = isReg ? 'block' : 'none';
-      document.getElementById('regExp').style.display = isReg ? 'block' : 'none';
-
-      document.getElementById('authEmail').value = '';
-      document.getElementById('authMobile').value = '';
-      document.getElementById('authOtpInput').value = '';
-      document.getElementById('otpSection').style.display = 'none';
-      document.getElementById('btnAuthSubmit').innerText = 'Send OTP & Proceed';
-      document.getElementById('authModal').style.display = 'flex';
-    }
-
-    function closeAuthModal() { document.getElementById('authModal').style.display = 'none'; }
-
-    function processAuthSubmission() {
-      const email = document.getElementById('authEmail').value.trim();
-      const mobile = document.getElementById('authMobile').value.trim();
-
-      if (!email.includes('@gmail.com') || mobile.length < 10) {
-        alert('Please provide valid Gmail ID and 10-digit Mobile Number.');
-        return;
-      }
-
-      if (!otpVerified) {
-        generatedOtp = Math.floor(1000 + Math.random() * 9000);
-        alert(`[OTP Simulation]: Your verification code is ${generatedOtp}`);
-        document.getElementById('otpSection').style.display = 'block';
-        document.getElementById('btnAuthSubmit').innerText = 'Confirm & Login';
-        otpVerified = true;
-        return;
-      }
-
-      const enteredOtp = document.getElementById('authOtpInput').value.trim();
-      if (enteredOtp !== String(generatedOtp)) {
-        alert('Invalid OTP!');
-        return;
-      }
-
-      db.collection('users_crm').doc(email).get().then((doc) => {
-        if (authTargetMode === 'register') {
-          if (doc.exists) { alert('Account already exists! Please login.'); return; }
-          let name = document.getElementById('regFullName').value.trim() || "User";
-          let degree = document.getElementById('regDegree').value.trim() || "Professional";
-          let experience = document.getElementById('regExp').value.trim() || "5 Years";
-
-          db.collection('users_crm').doc(email).set({
-            role: authTargetRole,
-            mobile,
-            name,
-            degree,
-            experience,
-            verified: false
-          }).then(() => {
-            alert('Registration submitted! Awaiting Admin verification.');
-            closeAuthModal();
-          });
-        } else {
-          if (!doc.exists) { alert('Account not found! Please register first.'); return; }
-          let data = doc.data();
-          if (data.mobile !== mobile) { alert('Incorrect Password.'); return; }
-          if (data.verified === false) { alert('Your account is pending Admin verification.'); return; }
-          alert('Login Successful!');
-          closeAuthModal();
-          openDirectoryView(authTargetRole, email);
-        }
-      });
-    }
-
-    function promptAdminLogin() {
-      const id = prompt("Admin ID:");
-      if (!id) return;
-      const pass = prompt("Admin Password:");
-      if (!pass) return;
-      if (id.trim() === "9351000961" && pass.trim() === "1960001539") {
-        alert("Master Admin Access Granted.");
-        openDirectoryView('admin');
-      } else {
-        alert("Access Denied.");
       }
     }
 
@@ -984,10 +511,10 @@
       if(currentRole === 'doctor') {
         let docObj = allDocs.find(d => d.email === loggedInUserEmail);
         if(!docObj) {
-          box.innerHTML = `<div style="background:#fff; padding:36px; text-align:center; border-radius:12px; color:#64748b;">Loading your doctor dashboard...</div>`;
+          box.innerHTML = `<div style="background:#fff; padding:36px; text-align:center; border-radius:12px; color:#64748b;">No profile registered under this login. Please add your doctor profile from Admin.</div>`;
           return;
         }
-        renderSingleDoctorCard(docObj, box);
+        renderListing([docObj]);
         return;
       }
 
@@ -998,7 +525,7 @@
       const filtered = allDocs.filter(d => {
         const mState = (state === 'all') || (d.state && d.state.toLowerCase() === state.toLowerCase());
         const mDist = (district === 'all') || (d.district && d.district.toLowerCase() === district.toLowerCase());
-        const mQ = !q || (d.name && d.name.toLowerCase().includes(q)) || (d.doctorId && d.doctorId.toLowerCase().includes(q)) || (d.clinic_address && d.clinic_address.toLowerCase().includes(q));
+        const mQ = !q || (d.name && d.name.toLowerCase().includes(q)) || (d.clinic_address && d.clinic_address.toLowerCase().includes(q));
         const mDept = (activeDept === 'all') || (d.department && d.department.toLowerCase() === activeDept.toLowerCase());
         return mState && mDist && mQ && mDept;
       });
@@ -1006,68 +533,15 @@
       renderListing(filtered);
     }
 
-    function renderSingleDoctorCard(d, box) {
-      let notesHtml = '';
-      if (d.notes && d.notes.length > 0) {
-        d.notes.forEach(n => {
-          notesHtml += `<div class="dash-item-row"><span>📞 ${n.call} | 📦 <b>${n.product}</b></span><span style="color:#64748b; font-size:10px;">${n.timeStr || ''}</span></div>`;
-        });
-      }
-
-      let apptHtml = '';
-      if (d.appointments && d.appointments.length > 0) {
-        d.appointments.forEach(a => {
-          apptHtml += `<div class="dash-item-row"><span>👤 <b>${a.patientName}</b> (${a.phone})</span><span style="color:#0284c7; font-weight:700;">${a.slot} Slot</span></div>`;
-        });
-      }
-
-      const card = document.createElement('div');
-      card.className = 'jd-doc-card';
-      card.style.gridTemplateColumns = '1fr';
-      card.innerHTML = `
-        <div class="jd-doc-details">
-          <h2>${d.name} <span style="font-size:0.85rem; color:#64748b;">(${d.degree})</span></h2>
-          <div class="jd-badges">
-            <span class="badge-star"><i class="fa-solid fa-star"></i> ${d.rating || '4.9'}</span>
-            <span class="badge-trust"><i class="fa-solid fa-shield"></i> Verified</span>
-            <span class="badge-docid"><i class="fa-solid fa-id-badge"></i> ID: ${d.doctorId || 'N/A'}</span>
-          </div>
-          <div class="jd-spec-title">${d.department}</div>
-          <div class="jd-meta-lines">
-            <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address} (${d.district}, ${d.state})</div>
-            <div><i class="fa-solid fa-pills" style="color:#ea580c;"></i> Chemist: ${d.chemist_shop || '-'} (Ph: ${d.chemist_phone || '-'})</div>
-            <div><i class="fa-solid fa-indian-rupee-sign" style="color:#059669;"></i> Fee: ₹${d.fee || '300'} • ${d.opd_timings}</div>
-          </div>
-
-          <div class="doctor-live-dashboard">
-            <div class="dash-sec-title"><i class="fa-solid fa-briefcase-medical"></i> Medical Representative Calling Requests:</div>
-            ${notesHtml || '<div style="color:#94a3b8; font-size:11px;">No MR requests logged yet.</div>'}
-            <div class="dash-sec-title" style="margin-top:10px;"><i class="fa-solid fa-calendar-check"></i> Patient Appointments:</div>
-            ${apptHtml || '<div style="color:#94a3b8; font-size:11px;">No patient appointments booked yet.</div>'}
-          </div>
-        </div>
-      `;
-      box.appendChild(card);
-    }
-
     function renderListing(data) {
       const box = document.getElementById('doctorsListings');
       box.innerHTML = '';
       if (data.length === 0) {
-        box.innerHTML = `<div style="background:#fff; padding:36px; text-align:center; border-radius:12px; color:#64748b;">No doctors found.</div>`;
+        box.innerHTML = `<div style="background:#fff; padding:36px; text-align:center; border-radius:12px; color:#64748b;">No doctors listed yet. Click 'Add Verified Doctor' to add real doctors.</div>`;
         return;
       }
 
       data.forEach(d => {
-        const canMR = (currentRole === 'mr' || currentRole === 'doctor' || currentRole === 'admin');
-
-        let notesHtml = '';
-        if (d.notes && d.notes.length > 0) {
-          d.notes.forEach(n => {
-            notesHtml += `<div class="dash-item-row"><span>📞 ${n.call} | 📦 <b>${n.product}</b></span><span style="color:#64748b; font-size:10px;">${n.timeStr || ''}</span></div>`;
-          });
-        }
-
         const card = document.createElement('div');
         card.className = 'jd-doc-card';
         card.innerHTML = `
@@ -1075,30 +549,18 @@
           <div class="jd-doc-details">
             <h2>${d.name} <span style="font-size:0.85rem; color:#64748b;">(${d.degree})</span></h2>
             <div class="jd-badges">
-              <span class="badge-star"><i class="fa-solid fa-star"></i> ${d.rating || '4.9'}</span>
-              <span class="badge-trust"><i class="fa-solid fa-shield"></i> Verified</span>
-              <span class="badge-docid"><i class="fa-solid fa-id-badge"></i> ID: ${d.doctorId || 'N/A'}</span>
+              <span class="badge-docid"><i class="fa-solid fa-id-badge"></i> ${d.doctorId || 'DR0001'}</span>
             </div>
             <div class="jd-spec-title">${d.department}</div>
             <div class="jd-meta-lines">
-              <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address} (${d.district}, ${d.state})</div>
+              <div><i class="fa-solid fa-location-dot" style="color:var(--brand-pink);"></i> ${d.clinic_address}</div>
               <div><i class="fa-solid fa-pills" style="color:#ea580c;"></i> Chemist: ${d.chemist_shop || '-'} (Ph: ${d.chemist_phone || '-'})</div>
               <div><i class="fa-solid fa-indian-rupee-sign" style="color:#059669;"></i> Fee: ₹${d.fee || '300'} • ${d.opd_timings}</div>
             </div>
-
-            ${canMR ? `
-              <div style="margin-top:10px; display:flex; gap:6px;">
-                <input type="text" id="call-${d.id}" placeholder="MR Call update" style="flex:1; padding:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px;">
-                <input type="text" id="prod-${d.id}" placeholder="Product" style="flex:1; padding:5px; font-size:11px; border:1px solid #cbd5e1; border-radius:4px;">
-                <button onclick="addMRNote('${d.id}')" style="background:var(--brand-blue); color:#fff; border:none; padding:5px 10px; border-radius:4px; font-size:11px; cursor:pointer;">Log Call</button>
-              </div>
-            ` : ''}
-
-            <div class="jd-actions" style="margin-top:10px;">
+            <div class="jd-actions">
               <a href="tel:${d.phone}" class="btn-act call"><i class="fa-solid fa-phone"></i> ${d.phone}</a>
-              ${currentRole === 'patient' ? `<button onclick="prefillBooking('${d.id}', '${d.name}')" class="btn-act book"><i class="fa-solid fa-calendar-check"></i> Book Now</button>` : ''}
-              <a href="https://wa.me/91${d.phone.replace(/[^0-9]/g, '').slice(-10)}" target="_blank" class="btn-act whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-              <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.name + ' ' + d.clinic_address)}" target="_blank" class="btn-act map"><i class="fa-solid fa-map-location-dot"></i> Live Map Location</a>
+              <a href="https://wa.me/91${(d.phone || '').replace(/[^0-9]/g, '').slice(-10)}" target="_blank" class="btn-act whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.name + ' ' + d.clinic_address)}" target="_blank" class="btn-act map"><i class="fa-solid fa-map-location-dot"></i> Live Map</a>
             </div>
           </div>
         `;
@@ -1106,57 +568,9 @@
       });
     }
 
-    let selectedDocIdForBooking = "2001";
-    function prefillBooking(id, name) {
-      selectedDocIdForBooking = id;
-      document.getElementById('bkName').focus();
-      document.getElementById('bkName').placeholder = `Booking for ${name}...`;
-    }
-
-    function handleBooking(e) {
-      e.preventDefault();
-      const patientName = document.getElementById('bkName').value.trim();
-      const phone = document.getElementById('bkPhone').value.trim();
-      const slot = document.getElementById('bkSlot').value;
-      let doc = allDocs.find(d => String(d.id) === String(selectedDocIdForBooking));
-      if (doc) {
-        if (!doc.appointments) doc.appointments = [];
-        doc.appointments.push({ patientName, phone, slot, time: new Date().toLocaleTimeString() });
-        db.collection("doctors_crm").doc(String(selectedDocIdForBooking)).update({ appointments: doc.appointments }).then(() => {
-          alert(`Appointment Requested Successfully!`);
-          e.target.reset();
-        });
-      }
-    }
-
-    function addMRNote(docId) {
-      const call = document.getElementById(`call-${docId}`).value.trim();
-      const prod = document.getElementById(`prod-${docId}`).value.trim();
-      if (!call && !prod) return;
-      let doc = allDocs.find(d => String(d.id) === String(docId));
-      if (doc) {
-        if (!doc.notes) doc.notes = [];
-        doc.notes.push({ call: call || "Visit", product: prod || "N/A", timeStr: new Date().toLocaleTimeString() });
-        db.collection("doctors_crm").doc(String(docId)).update({ notes: doc.notes }).then(() => {
-          alert("MR Call logged successfully to Doctor dashboard!");
-        });
-      }
-    }
-
-    function generateSequentialDoctorId(existingList) {
-      let maxNum = 0;
-      existingList.forEach(d => {
-        if(d.doctorId && d.doctorId.startsWith("DR")) {
-          let num = parseInt(d.doctorId.replace("DR", ""));
-          if(!isNaN(num) && num > maxNum) maxNum = num;
-        }
-      });
-      return "DR" + String(maxNum + 1).padStart(4, '0');
-    }
-
     function openAddDoctorModal() { document.getElementById('addDocModal').style.display = 'flex'; }
     function closeAddDoctorModal() { document.getElementById('addDocModal').style.display = 'none'; }
-    
+
     function submitNewDoctor() {
       const name = document.getElementById('dName').value.trim();
       const degree = document.getElementById('dDeg').value.trim();
@@ -1165,186 +579,62 @@
       const district = document.getElementById('dDistrict').value.trim();
       const clinic_address = document.getElementById('dClinic').value.trim();
       const chemist_shop = document.getElementById('dChemist').value.trim() || "-";
+      const chemist_phone = document.getElementById('dChemistPhone').value.trim() || "-";
       const opd_timings = document.getElementById('dTime').value.trim();
       const fee = document.getElementById('dFee').value.trim();
       const phone = document.getElementById('dPhone').value.trim();
-      const chemist_phone = document.getElementById('dChemistPhone').value.trim() || "-";
       const email = document.getElementById('dEmail').value.trim();
-      if (!name || !district || !state) { alert("Fill required fields!"); return; }
 
-      const newDocObj = {
-        id: String(Date.now()),
-        doctorId: "",
-        name: name.startsWith("Dr.") ? name : `Dr. ${name}`,
-        degree, department, state, district, clinic_address, chemist_shop, chemist_phone, opd_timings, fee: fee || "350", phone, email,
-        rating: "5.0",
-        verified: (currentRole === 'admin') ? true : false,
-        notes: [], appointments: []
-      };
-
-      if(currentRole === 'admin') {
-        newDocObj.doctorId = generateSequentialDoctorId([...allDocs, ...pendingDocs]);
+      if (!name || !clinic_address || !phone) {
+        alert("Please fill Doctor Name, Clinic Address, and Mobile Number!");
+        return;
       }
 
-      db.collection("doctors_crm").doc(newDocObj.id).set(newDocObj).then(() => {
-        if (currentRole === 'admin') {
-          alert(`Doctor added successfully! ID: ${newDocObj.doctorId}`);
-          allDocs.push(newDocObj);
-        } else {
-          alert(`Doctor submitted for Admin verification!`);
-          pendingDocs.push(newDocObj);
-        }
+      let seqId = "DR" + String(allDocs.length + 1).padStart(4, '0');
+
+      const newDoc = {
+        id: String(Date.now()),
+        doctorId: seqId,
+        name: name.startsWith("Dr.") ? name : `Dr. ${name}`,
+        degree, department, state, district, clinic_address,
+        chemist_shop, chemist_phone, opd_timings,
+        fee: fee || "350", phone, email
+      };
+
+      db.collection(DB_COLLECTION).doc(newDoc.id).set(newDoc).then(() => {
+        alert(`Doctor added successfully! ID: ${newDoc.doctorId}`);
+        allDocs.push(newDoc);
         closeAddDoctorModal();
         filterDoctors();
       });
     }
 
-    function openPendingModal() {
-      db.collection("users_crm").where("verified", "==", false).get().then(snap => {
-        pendingUsers = [];
-        snap.forEach(doc => pendingUsers.push({ id: doc.id, ...doc.data() }));
-
-        const container = document.getElementById('pendingListContainer');
-        container.innerHTML = '';
-        
-        let html = '<h4 style="margin-bottom:8px; color:var(--primary);">User Registrations:</h4>';
-        if (pendingUsers.length === 0) { html += '<p style="color:#64748b; font-size:0.8rem;">No pending user registrations.</p>'; }
-        else {
-          pendingUsers.forEach(u => {
-            html += `<div style="background:#f8fafc; border:1px solid #cbd5e1; padding:8px; border-radius:6px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;"><div><strong>${u.name}</strong> (${u.role.toUpperCase()}) - ${u.id}</div><button onclick="approveUser('${u.id}')" style="background:#10b981; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-weight:700; cursor:pointer;">Approve</button></div>`;
-          });
-        }
-
-        html += '<h4 style="margin:12px 0 8px 0; color:var(--primary);">Doctor Additions:</h4>';
-        if (pendingDocs.length === 0) { html += '<p style="color:#64748b; font-size:0.8rem;">No pending doctor requests.</p>'; }
-        else {
-          pendingDocs.forEach(d => {
-            html += `<div style="background:#f8fafc; border:1px solid #cbd5e1; padding:8px; border-radius:6px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;"><div><strong>${d.name}</strong> (${d.department}) - ${d.district}</div><button onclick="approveDoc('${d.id}')" style="background:#10b981; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-weight:700; cursor:pointer;">Approve</button></div>`;
-          });
-        }
-
-        container.innerHTML = html;
-        document.getElementById('pendingModal').style.display = 'flex';
-      });
-    }
-
-    function closePendingModal() { document.getElementById('pendingModal').style.display = 'none'; }
-    
-    function approveUser(email) {
-      db.collection("users_crm").doc(email).update({ verified: true }).then(() => {
-        alert("User approved successfully!");
-        openPendingModal();
-      });
-    }
-
-    function approveDoc(id) {
-      let idx = pendingDocs.findIndex(d => d.id === id);
-      if (idx !== -1) {
-        let doc = pendingDocs[idx];
-        doc.verified = true;
-        doc.doctorId = generateSequentialDoctorId([...allDocs, ...pendingDocs]);
-        db.collection("doctors_crm").doc(id).update({ verified: true, doctorId: doc.doctorId }).then(() => {
-          pendingDocs.splice(idx, 1);
-          allDocs.push(doc);
-          alert(`Doctor approved! Assigned Unique ID: ${doc.doctorId}`);
-          openPendingModal();
-          filterDoctors();
-        });
+    function promptAdminLogin() {
+      const id = prompt("Admin ID:");
+      const pass = prompt("Admin Password:");
+      if (id === "9351000961" && pass === "1960001539") {
+        alert("Master Admin Access Granted.");
+        openDirectoryView('admin');
+      } else {
+        alert("Access Denied.");
       }
     }
 
-    /* PRIVATE DOCTOR PEER CHAT SYSTEM */
-    function openChatModal() {
-      document.getElementById('chatModal').style.display = 'flex';
-      loadPeerDoctorsList();
+    function openAuthModal(role, mode) {
+      document.getElementById('modalAuthTitle').innerText = `${role.toUpperCase()} — ${mode.toUpperCase()}`;
+      document.getElementById('authModal').style.display = 'flex';
     }
-    function closeChatModal() {
-      document.getElementById('chatModal').style.display = 'none';
-      if(chatUnsubscribe) chatUnsubscribe();
+    function closeAuthModal() { document.getElementById('authModal').style.display = 'none'; }
+    function processAuthSubmission() {
+      const email = document.getElementById('authEmail').value.trim();
+      if(!email) return alert("Enter email");
+      closeAuthModal();
+      openDirectoryView('doctor', email);
     }
-
-    function loadPeerDoctorsList() {
-      const listDiv = document.getElementById('doctorPeerList');
-      listDiv.innerHTML = '';
-      allDocs.forEach(d => {
-        if(d.email && d.email !== loggedInUserEmail) {
-          listDiv.innerHTML += `
-            <div style="background:#f1f5f9; padding:8px; border-radius:6px; font-size:0.8rem; display:flex; flex-direction:column; gap:4px;">
-              <strong>${d.name}</strong>
-              <div id="peer-action-${d.id}">
-                <button onclick="sendPeerRequest('${d.email}', '${d.name}')" style="background:var(--primary); color:#fff; border:none; padding:3px 8px; border-radius:4px; font-weight:700; cursor:pointer; font-size:0.7rem;">Connect</button>
-              </div>
-            </div>
-          `;
-        }
-      });
-      loadIncomingRequests();
-    }
-
-    function sendPeerRequest(targetEmail, targetName) {
-      db.collection("doctor_peer_chats").add({
-        sender: loggedInUserEmail,
-        receiver: targetEmail,
-        status: "pending",
-        time: Date.now()
-      }).then(() => {
-        alert(`Connection request sent to ${targetName}!`);
-      });
-    }
-
-    function loadIncomingRequests() {
-      db.collection("doctor_peer_chats").where("receiver", "==", loggedInUserEmail).where("status", "==", "pending").get().then(snap => {
-        snap.forEach(doc => {
-          let req = doc.data();
-          let peerList = document.getElementById('doctorPeerList');
-          peerList.innerHTML += `
-            <div style="background:#fef08a; padding:6px; border-radius:6px; font-size:0.75rem;">
-              <strong>Req from:</strong> ${req.sender}
-              <button onclick="acceptPeerRequest('${doc.id}', '${req.sender}')" style="background:#10b981; color:#fff; border:none; padding:2px 6px; border-radius:4px; margin-top:4px; cursor:pointer;">Accept</button>
-            </div>
-          `;
-        });
-      });
-    }
-
-    function acceptPeerRequest(reqId, senderEmail) {
-      db.collection("doctor_peer_chats").doc(reqId).update({ status: "accepted" }).then(() => {
-        alert("Request accepted! You can now chat privately.");
-        openChatRoom(senderEmail);
-      });
-    }
-
-    function openChatRoom(peerEmail) {
-      activeChatRoomId = [loggedInUserEmail, peerEmail].sort().join("_");
-      document.getElementById('chatActiveHeader').innerText = `Private Chat with: ${peerEmail}`;
-      document.getElementById('chatInputText').disabled = false;
-      document.getElementById('btnSendChat').disabled = false;
-
-      if(chatUnsubscribe) chatUnsubscribe();
-      chatUnsubscribe = db.collection("private_chat_messages").where("roomId", "==", activeChatRoomId).orderBy("time", "asc").onSnapshot(snap => {
-        const container = document.getElementById('chatMsgContainer');
-        container.innerHTML = '';
-        snap.forEach(doc => {
-          let m = doc.data();
-          let isMe = (m.sender === loggedInUserEmail);
-          container.innerHTML += `<div class="chat-bubble ${isMe ? 'me' : ''}"><b>${isMe ? 'You' : m.sender}:</b> ${m.text}</div>`;
-        });
-        container.scrollTop = container.scrollHeight;
-      });
-    }
-
-    function sendPrivateChatMessage() {
-      const text = document.getElementById('chatInputText').value.trim();
-      if(!text || !activeChatRoomId) return;
-
-      db.collection("private_chat_messages").add({
-        roomId: activeChatRoomId,
-        sender: loggedInUserEmail,
-        text,
-        time: Date.now()
-      }).then(() => {
-        document.getElementById('chatInputText').value = '';
-      });
+    function handleBooking(e) {
+      e.preventDefault();
+      alert("Appointment request submitted successfully!");
+      e.target.reset();
     }
 
     initCloud();
